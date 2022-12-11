@@ -1,0 +1,26 @@
+{% extends 'generator/base.html' %}
+
+{% block content %}
+<p><a href="{% url 'info' %}">Информация</a></p>
+<h1>{{ title }}</h1>
+<form action="{% url 'password' %}">
+    <select name="length">
+        {% for length in numbers %}
+        {% if length == 12 %}
+        <option value="{{ length }}" selected="selected">{{ length }}</option>
+        {% else %}
+        <option value="{{ length }}">{{ length }}</option>
+        {% endif %}
+        {% endfor %}
+    </select> Длина пароля
+    <br>
+    <input type="checkbox" name="numbers"> Числа
+    <br>
+    <input type="checkbox" name="uppercase"> Вверхний регист
+    <br>
+    <input type="checkbox" name="special"> Особые символыт
+    <br>
+
+    <input type="submit" value="Сгенерировать пароль" class="btn btn-primary">
+</form>
+{% endblock content %}
